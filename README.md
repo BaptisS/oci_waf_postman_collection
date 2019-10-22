@@ -1,24 +1,23 @@
+
 # oci_waf_postman_collection
 
-OCI WAF Advanced features with Postman (REST APIs)
+**OCI WAF Advanced features with Postman (REST APIs)**
 
 Prerequisites
+Step 1: INSTALL Postman
+Step 2: IMPORT OCI WAF collection and environment templates
+Step 3: DEFINE environment variables
+Step 4: INITIALIZE Postman for OCI
+Step 5: EXECUTE your first API query (GET WAF POLICY CONFIG)
+Step 6: MODIFY OCI WAF Configuration (PUT WAF POLICY CONFIG)
 
-1-   Step 1: INSTALL Postman	
-2-   Step 2: IMPORT OCI WAF collection and environment templates	
-3-   Step 3: DEFINE environment variables	
-4-   Step 4: INITIALIZE Postman for OCI	
-5-   Step 5: EXECUTE your first API query (GET WAF POLICY CONFIG)	
-6-   Step 6: MODIFY OCI WAF Configuration (PUT WAF POLICY CONFIG)	
-
-
-OCI WAF Advanced features with Postman (REST APIs)
+**OCI WAF Advanced features with Postman (REST APIs)**
 
 You can create and manage your OCI WAF Policies using the OCI web console, the CLI (Command Line Interface) or using REST APIs.
 
 This document will guides you through the configuration and usage of Postman (as a REST Client) to demonstrate how you can easily manage your WAF policies and enable OCI WAF advanced features (Device Fingerprint Challenge, Human Interaction Challenge , Address rate limit , Threat feeds, etc. )
 
-Prerequisites:
+***Prerequisites:***
 	A computer with outbound Internet access.
 	OCI WAF Policy in ‘Available' state
 	OCI API Keys and OCIDs mentioned below : https://docs.cloud.oracle.com/iaas/Content/API/Concepts/apisigningkey.htm 
@@ -29,14 +28,17 @@ o	User's OCID.
 	WAF policy OCID.
 
  
-1-    Step 1: Install Postman
+**
+
+## 1- Step 1: Install Postman
+
+**
 
 1.1	- Download and Install Postman from its official location: https://www.getpostman.com/ on a computer with outbound internet access. 
 1.2	- Launch Postman.
 1.3	- Skip the user registration by clicking on the bottom link (‘Skip signing in…’) if you do not want to create a Postman account.
 
- 
-Note: You can review the benefits of creating a Postman account through Official Postman documentation.
+**Note:** You can review the benefits of creating a Postman account through Official Postman documentation.
 
 1.4	– Close the ‘Create New’ Wizard. 
  
