@@ -3,14 +3,6 @@
 
 **OCI WAF Advanced features with Postman (REST APIs)**
 
-Prerequisites
-Step 1: INSTALL Postman
-Step 2: IMPORT OCI WAF collection and environment templates
-Step 3: DEFINE environment variables
-Step 4: INITIALIZE Postman for OCI
-Step 5: EXECUTE your first API query (GET WAF POLICY CONFIG)
-Step 6: MODIFY OCI WAF Configuration (PUT WAF POLICY CONFIG)
-
 **OCI WAF Advanced features with Postman (REST APIs)**
 
 You can create and manage your OCI WAF Policies using the OCI web console, the CLI (Command Line Interface) or using REST APIs.
@@ -42,7 +34,7 @@ o	User's OCID.
 
 1.4	– Close the ‘Create New’ Wizard. 
  
-2-   Step 2: Import OCI WAF sample collection and environment templates 
+## 2-   Step 2: Import OCI WAF sample collection and environment templates 
 
 2.1 – Open a web browser and download OCI WAF Collection and environment templates from the following location: 
 https://objectstorage.eu-frankfurt-1.oraclecloud.com/p/1eMWPVENIQv6jV9yKTgvKVF0JMiJFLuR3sxxe7CETK8/n/oracsmemeaspec/b/FraBuck01/o/OCI_WAF_REST_UK_COLLECTION_v4.zip
@@ -76,7 +68,7 @@ Save the updated collection file.
  
 2.5 – Click ‘Import’ and ensure both the environment and the two collections have been imported successfully.  
  
-3-   Step 3: Define your environment variables
+## 3-   Step 3: Define your environment variables
  
 3.1 – In the top right of the Postman Interface, Click on the ‘Manage Environments’ button (wheel). 
  
@@ -94,7 +86,7 @@ Save the updated collection file.
 3.4 – Click ‘Update’ button and Close the ‘Manage Environments’ window. 
 
  
-4- Step 4: INITIALIZE Postman for OCI
+## 4- Step 4: INITIALIZE Postman for OCI
 
 4.1 – In the Left pane, Select the “Collections” tab then expand the OCI_REST_INITIALIZATION Collection. 
  
@@ -114,7 +106,7 @@ Templates provided contains HTTP body’s parameters examples.
 You should review and modify them before executing any PUT request.  
 
  
-5-    Step 5: Execute your first API query (GET WAF POLICY CONFIG) 
+## 5-    Step 5: Execute your first API query (GET WAF POLICY CONFIG) 
 
 5.1 – In the Left pane, Select the “Collections” tab then expand the OCI_WAF_REST_XX_COLLECTION and select the ‘WAF_POLICY_GET’ query. 
  
@@ -125,7 +117,7 @@ You should review and modify them before executing any PUT request.
 5.4 – Review the Status Code returned and associated outputs. (In the Center lower pane) 
  
  
-6-    Step 6: Modify WAF Configuration (PUT WAF POLICY CONFIG)
+## 6-    Step 6: Modify WAF Configuration (PUT WAF POLICY CONFIG)
 
 IMPORTANT NOTE:
 DO NOT SEND A PUT REQUEST before checking the Request’s Body parameters otherwise you could unexpectedly modify your WAF configuration. Templates provided contains HTTP body’s parameters examples. You should review and modify them before executing any PUT request.  
@@ -161,39 +153,46 @@ The proposed example can be used to modify your WAF policy Configuration as per 
 
  
 
-APPENDIX: 
+ 
 
-Links & References: 
-General: 
+## Links & References: 
+
+**General:** 
 -	Invoking OCI REST APIs using POSTMAN: https://www.ateam-oracle.com/invoking-oci-rest-apis-using-postman
 -	Oracle Cloud Infrastructure (OCI) REST call walkthrough with curl: https://www.ateam-oracle.com/oracle-cloud-infrastructure-oci-rest-call-walkthrough-with-curl 
 -	OCI WAF API References: https://docs.cloud.oracle.com/iaas/api/#/en/waas/latest/
-OCI WAF Access Control: 
+
+**OCI WAF Access Control:**
 	https://docs.cloud.oracle.com/iaas/Content/WAF/Tasks/wafaccesscontrol.htm
 	https://docs.cloud.oracle.com/iaas/api/#/en/waas/20181116/AccessRule/ 
-OCI WAF Address Rate Limit:
+
+**OCI WAF Address Rate Limit:**
 The number of allowed requests per second from one IP address. If unspecified, defaults to "1”.
 https://docs.cloud.oracle.com/iaas/api/#/en/waas/20181116/AddressRateLimiting/
-OCI WAF Device Fingerprint Challenge (BotManagement): 
+
+**OCI WAF Device Fingerprint Challenge (BotManagement):** 
 The DFC generates a hashed signature of both virtual and real browsers based on 50+ attributes. These proprietary signatures are then leveraged for real-time correlation to identify and block malicious bots.
 The signature is based on a library of attributes detected via JavaScript listeners; the attributes include OS, screen resolution, fonts, UserAgent, IP address, etc. We are constantly making improvements and considering new libraries to include in our DFC build. We can also exclude attributes from the signature as needed.
 DFC collects attributes to generate a hashed signature about a client – if a fingerprint is not possible, then it will result in a block or alert action. Actions can be enforced across multiple devices if they share they have the same fingerprint.
 https://docs.cloud.oracle.com/iaas/api/#/en/waas/20181116/DeviceFingerprintChallenge/
-OCI WAF Human Interaction Challenge (BotManagement): 
+
+**OCI WAF Human Interaction Challenge (BotManagement):** 
 HIC is a countermeasure that allows the proxy to check the user's browser for various behaviors that distinguish a human presence from a bot.
 At high level HIC first allows the client request then start recording any potential user activity such as ‘mouse move, scroll, button click, etc.’ 
-
 https://docs.cloud.oracle.com/iaas/api/#/en/waas/20181116/HumanInteractionChallenge/
-OCI WAF JavaScript Challenge (BotManagement) : 
+
+**OCI WAF JavaScript Challenge (BotManagement) :** 
 JavaScript Challenge is the function to filter abnormal or malicious bots and allow access to real clients. JavaScript Challenge validates that the client can accept JavaScript with a binary decision
 	https://docs.cloud.oracle.com/iaas/Content/WAF/Tasks/botmanagement.htm
 	https://docs.cloud.oracle.com/iaas/api/#/en/waas/20181116/JsChallenge/
-OCI WAF Protection Rules: 
+
+**OCI WAF Protection Rules:**
 Protection rules match web traffic to rule conditions and determine the action to be taken when the conditions are met.
 	https://docs.cloud.oracle.com/iaas/Content/WAF/Tasks/wafprotectionrules.htm
 	https://docs.cloud.oracle.com/iaas/Content/WAF/Reference/protectionruleids.htm
 	https://docs.cloud.oracle.com/iaas/api/#/en/waas/20181116/ProtectionRule/
-OCI WAF Threat Feeds Intelligence: 
+
+**OCI WAF Threat Feeds Intelligence:**
 You can block requests from IP addresses based on their reputations with various commercial and open source threat feeds.
 	https://docs.cloud.oracle.com/iaas/Content/WAF/Tasks/threatintel.htm
 	https://docs.cloud.oracle.com/iaas/api/#/en/waas/20181116/ThreatFeed/
