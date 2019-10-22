@@ -20,11 +20,9 @@ o	User's OCID.
 	WAF policy OCID.
 
  
-**
 
 ## 1- Step 1: Install Postman
 
-**
 
 1.1	- Download and Install Postman from its official location: https://www.getpostman.com/ on a computer with outbound internet access. 
 1.2	- Launch Postman.
@@ -37,7 +35,7 @@ o	User's OCID.
 ## 2-   Step 2: Import OCI WAF sample collection and environment templates 
 
 2.1 – Open a web browser and download OCI WAF Collection and environment templates from the following location: 
-https://objectstorage.eu-frankfurt-1.oraclecloud.com/p/1eMWPVENIQv6jV9yKTgvKVF0JMiJFLuR3sxxe7CETK8/n/oracsmemeaspec/b/FraBuck01/o/OCI_WAF_REST_UK_COLLECTION_v4.zip
+https://github.com/BaptisS/oci_waf_postman_collection
 
 2.2 – Extract the zip content to a local folder on your computer. 
 Postman collection contains OCI WAF queries examples targeting a specific regional WAF API endpoint (‘waas.uk-london-1.oraclecloud.com’).
