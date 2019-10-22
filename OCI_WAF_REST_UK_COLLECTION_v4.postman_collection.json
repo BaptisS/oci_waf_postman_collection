@@ -1,0 +1,982 @@
+{
+	"info": {
+		"_postman_id": "2381c1f9-ad2e-4593-ae7a-cb275465e2e2",
+		"name": "OCI_WAF_REST_UK_COLLECTION",
+		"description": "This is a sample collection for invoking OCI REST APIs via POSTMAN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "WAF_LOGS_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/waasPolicies/{{wafpolicy01}}/wafLogs?limit=49&timeObservedGreaterThanOrEqualTo=2019-09-21T13:00:00Z",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"waasPolicies",
+						"{{wafpolicy01}}",
+						"wafLogs"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "49"
+						},
+						{
+							"key": "timeObservedGreaterThanOrEqualTo",
+							"value": "2019-09-21T13:00:00Z"
+						},
+						{
+							"key": "timeObservedLessThan",
+							"value": "2019-08-30T13:00:00Z",
+							"disabled": true
+						},
+						{
+							"key": "action",
+							"value": "BLOCK",
+							"disabled": true
+						},
+						{
+							"key": "domain",
+							"value": "bsoci.yourdomain.net",
+							"disabled": true
+						},
+						{
+							"key": "requestUrl",
+							"value": "/signin.aspx",
+							"disabled": true
+						},
+						{
+							"key": "clientAddress",
+							"value": "1.2.3.4",
+							"disabled": true
+						},
+						{
+							"key": "originAddress",
+							"value": "9.8.7.6:80",
+							"disabled": true
+						},
+						{
+							"key": "logType",
+							"value": "PROTECTION_RULES",
+							"disabled": true
+						},
+						{
+							"key": "logType",
+							"value": "HUMAN_INTERACTION_CHALLENGE",
+							"disabled": true
+						},
+						{
+							"key": "textContains",
+							"value": "inject",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WAF_POLICY_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/waasPolicies/{{wafpolicy01}}",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"waasPolicies",
+						"{{wafpolicy01}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WAF_POLICY_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"wafConfig\": {\r\n        \"addressRateLimiting\": {\r\n            \"allowedRatePerAddress\": 1,\r\n            \"blockResponseCode\": 503,\r\n            \"isEnabled\": true,\r\n            \"maxDelayedCountPerAddress\": 10\r\n        },\r\n        \"deviceFingerprintChallenge\": {\r\n            \"action\": \"BLOCK\",\r\n            \"actionExpirationInSeconds\": 60,\r\n            \"challengeSettings\": {\r\n                \"blockAction\": \"SHOW_CAPTCHA\",\r\n                \"blockErrorPageCode\": \"DFC\",\r\n                \"blockErrorPageDescription\": \"Access blocked by website owner. Please contact support.\",\r\n                \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n                \"blockResponseCode\": 403,\r\n                \"captchaFooter\": \"Enter the letters and numbers as they are shown in image above.\",\r\n                \"captchaHeader\": \"DFC detected an increased number of attempts to access this website. To help us keep this site secure, please let us know that you are not a robot by entering the text from the image below.\",\r\n                \"captchaSubmitLabel\": \"Yes, I am human.\",\r\n                \"captchaTitle\": \"Are you human?\"\r\n            },\r\n            \"failureThreshold\": 5,\r\n            \"failureThresholdExpirationInSeconds\": 60,\r\n            \"isEnabled\": true,\r\n            \"maxAddressCount\": 10,\r\n            \"maxAddressCountExpirationInSeconds\": 60\r\n        },\r\n        \"humanInteractionChallenge\": {\r\n            \"action\": \"BLOCK\",\r\n            \"actionExpirationInSeconds\": 60,\r\n            \"challengeSettings\": {\r\n                \"blockAction\": \"SHOW_CAPTCHA\",\r\n                \"blockErrorPageCode\": \"HIC\",\r\n                \"blockErrorPageDescription\": \"Access blocked by website owner. Please contact support.\",\r\n                \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n                \"captchaFooter\": \"Enter the letters and numbers as they are shown in image above.\",\r\n                \"captchaHeader\": \"HIC have detected an increased number of attempts to access this website. To help us keep this site secure, please let us know that you are not a robot by entering the text from the image below.\",\r\n                \"captchaSubmitLabel\": \"Yes, I am human.\",\r\n                \"captchaTitle\": \"Are you human?\"\r\n            },\r\n            \"failureThreshold\": 5,\r\n            \"failureThresholdExpirationInSeconds\": 60,\r\n            \"interactionThreshold\": 3,\r\n            \"isEnabled\": true,\r\n            \"recordingPeriodInSeconds\": 10\r\n        },\r\n        \"jsChallenge\": {\r\n            \"action\": \"BLOCK\",\r\n            \"actionExpirationInSeconds\": 60,\r\n            \"challengeSettings\": {\r\n                \"blockAction\": \"SHOW_ERROR_PAGE\",\r\n                \"blockErrorPageCode\": \"JSC-403\",\r\n                \"blockErrorPageDescription\": \"Access blocked by website owner. Please contact support.\",\r\n                \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n                \"blockResponseCode\": 403,\r\n                \"captchaFooter\": \"Enter the letters and numbers as they are shown in image above.\",\r\n                \"captchaHeader\": \"We have detected an increased number of attempts to access this website. To help us keep this site secure, please let us know that you are not a robot by entering the text from the image below.\",\r\n                \"captchaSubmitLabel\": \"Yes, I am human.\",\r\n                \"captchaTitle\": \"Are you human?\"\r\n            },\r\n            \"failureThreshold\": 5,\r\n            \"isEnabled\": true,\r\n            \"setHttpHeader\": {\r\n                \"name\": \"x-jsc-alerts\",\r\n                \"value\": \"{failed_amount}\"\r\n            }\r\n        },\r\n        \"protectionRules\": [\r\n            {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"932171\",\r\n    \"name\": \"Remote Command Execution (RCE) Attempt: Shellshock vulnerability (CVE-2014-6271 and CVE-2014-7169)\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"932170\",\r\n    \"name\": \"Remote Command Execution (RCE) Attempt: Shellshock vulnerability (CVE-2014-6271 and CVE-2014-7169)\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"911100\",\r\n    \"name\": \"Restrict HTTP Request Methods\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"90004\",\r\n    \"name\": \"Executable file upload attempt\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950103\",\r\n    \"name\": \"Path/directory traversal\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"1000000\",\r\n    \"name\": \"Shellshock exploit attempt\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950006\",\r\n    \"name\": \"Injection for common system commands\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950011\",\r\n    \"name\": \"SSI Injection\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950010\",\r\n    \"name\": \"LDAP Injection\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950907\",\r\n    \"name\": \"OS Command Injection\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950120\",\r\n    \"name\": \"Host doesn't match localhost\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958046\",\r\n    \"name\": \"url shell XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958011\",\r\n    \"name\": \"background-image: XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958051\",\r\n    \"name\": \"?script XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958009\",\r\n    \"name\": \"import XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958045\",\r\n    \"name\": \"url javascript: XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958416\",\r\n    \"name\": \"bonmouseout XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958018\",\r\n    \"name\": \"href javascript: XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958000\",\r\n    \"name\": \"addimport XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958005\",\r\n    \"name\": \"cdata XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958001\",\r\n    \"name\": \"document cookie XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958006\",\r\n    \"name\": \"body background XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958031\",\r\n    \"name\": \"javascript: XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958057\",\r\n    \"name\": \"?iframe XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958002\",\r\n    \"name\": \"execscript XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958019\",\r\n    \"name\": \"href schell XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958032\",\r\n    \"name\": \"src and shell XSS attack\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981136\",\r\n    \"name\": \"Generic XSS attacks\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"973300\",\r\n    \"name\": \"Common direct HTML injection\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950007\",\r\n    \"name\": \"Blind SQL injection\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950012\",\r\n    \"name\": \"HTTP Request Smuggling\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950910\",\r\n    \"name\": \"HTTP Response Splitting\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950002\",\r\n    \"name\": \"Common system command access attempt\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950005\",\r\n    \"name\": \"Common system files access attempt\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"973313\",\r\n    \"name\": \"&{alert('xss')} attacks\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"973312\",\r\n    \"name\": \"'';!--\\\"<XSS>=&{()} Attacks\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"973310\",\r\n    \"name\": \"Embedded Scripts Within Alert Fragments\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"973309\",\r\n    \"name\": \"CSS Fragments attacks\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"973307\",\r\n    \"name\": \"Embedded Scripts Within JavaScript Fragments\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"973306\",\r\n    \"name\": \"Embedding javascript in style attribute\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"973338\",\r\n    \"name\": \"Embedded Scripts Within URI Schemes\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"973337\",\r\n    \"name\": \"Embedded Scripts Within Event Handlers\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"973336\",\r\n    \"name\": \"Embedding Scripts Within Scripts\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"2250121\",\r\n    \"name\": \"Local File Inclusion ENV Attack in User-Agent\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"2250120\",\r\n    \"name\": \"Local File Inclusion Attacks\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"2250117\",\r\n    \"name\": \"Common RFI attacks\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950117\",\r\n    \"name\": \"URL Contains an IP Address\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960341\",\r\n    \"name\": \"Total Arguments Limits\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960335\",\r\n    \"name\": \"Number of Arguments Limits\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960208\",\r\n    \"name\": \"Values Limits\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960014\",\r\n    \"name\": \"URI Validation\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"958295\",\r\n    \"name\": \"Connection Header Validation\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960012\",\r\n    \"name\": \"Content-Length Header Validation\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960011\",\r\n    \"name\": \"GET/HEAD Requests Validation\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960017\",\r\n    \"name\": \"Host Header Is IP Address\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960904\",\r\n    \"name\": \"Missing Content-Type Header\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960009\",\r\n    \"name\": \"Missing User-Agent Header\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960015\",\r\n    \"name\": \"Missing Accept Header\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960007\",\r\n    \"name\": \"Missing Host Header\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960034\",\r\n    \"name\": \"Restrict HTTP Protocol Versions\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"960032\",\r\n    \"name\": \"Restrict HTTP Request Methods\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981247\",\r\n    \"name\": \"Concatenated basic SQL injection and SQLLFI attempts\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981256\",\r\n    \"name\": \"MATCH AGAINST, MERGE, EXECUTE IMMEDIATE and HAVING\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981241\",\r\n    \"name\": \"Conditional SQL injection attempts\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981250\",\r\n    \"name\": \"SQL benchmark and sleep injection attempts\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981248\",\r\n    \"name\": \"Chained SQL injection attempts\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981244\",\r\n    \"name\": \"SQL authentication bypass attempts\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950001\",\r\n    \"name\": \"Common SQL Injections\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981318\",\r\n    \"name\": \"String Termination/Statement Ending\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"95005\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"973305\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"973303\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"950901\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981231\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981270\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981078\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981173\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"942000\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981317\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"9421400\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"9811318\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981255\"\r\n  },\r\n  {\r\n    \"action\": \"BLOCK\",\r\n    \"key\": \"981260\",\r\n    \"name\": \"SQL Hex Evasion Methods\"\r\n  }\r\n       ]\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/waasPolicies/{{wafpolicy01}}?waasPolicyId={{wafpolicy01}}",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"waasPolicies",
+						"{{wafpolicy01}}"
+					],
+					"query": [
+						{
+							"key": "waasPolicyId",
+							"value": "{{wafpolicy01}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WAF_CONFIG_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/waasPolicies/{{wafpolicy01}}/wafConfig",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"waasPolicies",
+						"{{wafpolicy01}}",
+						"wafConfig"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WAF_CONFIG_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accessRules\": [\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"blockAction\": \"SHOW_ERROR_PAGE\",\r\n            \"blockErrorPageCode\": \"Access Rules-403\",\r\n            \"blockErrorPageDescription\": \"Access blocked - not from known source IP.\",\r\n            \"blockErrorPageMessage\": \"Access is blocked.\",\r\n            \"criteria\": [\r\n                {\r\n                    \"condition\": \"IP_IS_NOT\",\r\n                    \"value\": \"1.2.3.4\"\r\n                }\r\n            ],\r\n            \"name\": \"BlockRequestsNotfromMYIP\"\r\n        }\r\n    ],\r\n    \"addressRateLimiting\": {\r\n        \"allowedRatePerAddress\": 1,\r\n        \"blockResponseCode\": 503,\r\n        \"isEnabled\": true,\r\n        \"maxDelayedCountPerAddress\": 10\r\n    },\r\n    \"captchas\": [],\r\n    \"deviceFingerprintChallenge\": {\r\n        \"action\": \"DETECT\",\r\n        \"actionExpirationInSeconds\": 60,\r\n        \"challengeSettings\": {\r\n            \"blockAction\": \"SHOW_ERROR_PAGE\",\r\n            \"blockErrorPageCode\": \"DFC\",\r\n            \"blockErrorPageDescription\": \"Access blocked by website owner. Please contact support.\",\r\n            \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n            \"blockResponseCode\": 403,\r\n            \"captchaFooter\": \"Enter the letters and numbers as they are shown in image above.\",\r\n            \"captchaHeader\": \"We have detected an increased number of attempts to access this website. To help us keep this site secure, please let us know that you are not a robot by entering the text from the image below.\",\r\n            \"captchaSubmitLabel\": \"Yes, I am human.\",\r\n            \"captchaTitle\": \"Are you human?\"\r\n        },\r\n        \"failureThreshold\": 10,\r\n        \"failureThresholdExpirationInSeconds\": 60,\r\n        \"isEnabled\": false,\r\n        \"maxAddressCount\": 20,\r\n        \"maxAddressCountExpirationInSeconds\": 60\r\n    },\r\n    \"goodBots\": [],\r\n    \"humanInteractionChallenge\": {\r\n        \"action\": \"DETECT\",\r\n        \"actionExpirationInSeconds\": 60,\r\n        \"challengeSettings\": {\r\n            \"blockAction\": \"SHOW_ERROR_PAGE\",\r\n            \"blockErrorPageCode\": \"HIC\",\r\n            \"blockErrorPageDescription\": \"Access blocked by website owner. Please contact support.\",\r\n            \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n            \"blockResponseCode\": 403,\r\n            \"captchaFooter\": \"Enter the letters and numbers as they are shown in image above.\",\r\n            \"captchaHeader\": \"We have detected an increased number of attempts to access this website. To help us keep this site secure, please let us know that you are not a robot by entering the text from the image below.\",\r\n            \"captchaSubmitLabel\": \"Yes, I am human.\",\r\n            \"captchaTitle\": \"Are you human?\"\r\n        },\r\n        \"failureThreshold\": 10,\r\n        \"failureThresholdExpirationInSeconds\": 60,\r\n        \"interactionThreshold\": 3,\r\n        \"isEnabled\": true,\r\n        \"recordingPeriodInSeconds\": 15\r\n    },\r\n    \"jsChallenge\": {\r\n        \"action\": \"DETECT\",\r\n        \"actionExpirationInSeconds\": 60,\r\n        \"challengeSettings\": {\r\n            \"blockAction\": \"SHOW_ERROR_PAGE\",\r\n            \"blockErrorPageCode\": \"JSC-403\",\r\n            \"blockErrorPageDescription\": \"Access blocked by website owner. Please contact support.\",\r\n            \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n            \"blockResponseCode\": 403,\r\n            \"captchaFooter\": \"Enter the letters and numbers as they are shown in image above.\",\r\n            \"captchaHeader\": \"We have detected an increased number of attempts to access this website. To help us keep this site secure, please let us know that you are not a robot by entering the text from the image below.\",\r\n            \"captchaSubmitLabel\": \"Yes, I am human.\",\r\n            \"captchaTitle\": \"Are you human?\"\r\n        },\r\n        \"failureThreshold\": 10,\r\n        \"isEnabled\": false,\r\n        \"setHttpHeader\": {\r\n            \"name\": \"x-jsc-alerts\",\r\n            \"value\": \"{failed_amount}\"\r\n        }\r\n    },\r\n    \"origin\": \"OCI-LBAAS\",\r\n    \"protectionRules\": [\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"detects SQL hex encoding evasion attacks\",\r\n            \"exclusions\": [],\r\n            \"key\": \"981260\",\r\n            \"labels\": [\r\n                \"SQL Injections\",\r\n                \"WASCTC\",\r\n                \"OWASP\",\r\n                \"A1\",\r\n                \"PCI\",\r\n                \"Recommended\"\r\n            ],\r\n            \"modSecurityRuleIds\": [\r\n                \"981260\"\r\n            ],\r\n            \"name\": \"SQL Hex Evasion Methods\",\r\n            \"tags\": [\r\n                \"SQL Injections\",\r\n                \"WASCTC\",\r\n                \"OWASP\",\r\n                \"A1\",\r\n                \"PCI\",\r\n                \"Recommended\"\r\n            ]\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"identifies common initial SQLi probing requests where attackers insert/append quote characters to the existing normal payload to see how the app/db responds\",\r\n            \"exclusions\": [],\r\n            \"key\": \"981318\",\r\n            \"labels\": [\r\n                \"SQL Injections\",\r\n                \"WASCTC\",\r\n                \"OWASP\",\r\n                \"A1\",\r\n                \"PCI\",\r\n                \"Recommended\"\r\n            ],\r\n            \"modSecurityRuleIds\": [\r\n                \"981318\"\r\n            ],\r\n            \"name\": \"String Termination/Statement Ending\",\r\n            \"tags\": [\r\n                \"SQL Injections\",\r\n                \"WASCTC\",\r\n                \"OWASP\",\r\n                \"A1\",\r\n                \"PCI\",\r\n                \"Recommended\"\r\n            ]\r\n        }\r\n    ],\r\n    \"protectionSettings\": {\r\n        \"allowedHttpMethods\": [\r\n            \"GET\",\r\n            \"POST\",\r\n            \"HEAD\",\r\n            \"OPTIONS\"\r\n        ],\r\n        \"blockAction\": \"SHOW_ERROR_PAGE\",\r\n        \"blockErrorPageCode\": \"403\",\r\n        \"blockErrorPageDescription\": \"Unexpected request detected by OCI WAF Protection Rules. If this message persist please contact support.\",\r\n        \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n        \"blockResponseCode\": 403,\r\n        \"isResponseInspected\": false,\r\n        \"maxArgumentCount\": 255,\r\n        \"maxNameLengthPerArgument\": 400,\r\n        \"maxResponseSizeInKiB\": 1024,\r\n        \"maxTotalNameLengthOfArguments\": 64000,\r\n        \"mediaTypes\": [\r\n            \"text/html\",\r\n            \"text/plain\"\r\n        ],\r\n        \"recommendationsPeriodInDays\": 10\r\n    },\r\n    \"threatFeeds\": [],\r\n    \"whitelists\": []\r\n}"
+				},
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/waasPolicies/{{wafpolicy01}}/wafConfig",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"waasPolicies",
+						"{{wafpolicy01}}",
+						"wafConfig"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WAF_WORKREQUEST_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/workRequests/ocid1.waasworkrequest.oc1..aaa.......",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"workRequests",
+						"ocid1.waasworkrequest.oc1..aaa......."
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WAF_HIC_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/waasPolicies/{{wafpolicy01}}/wafConfig/humanInteractionChallenge",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"waasPolicies",
+						"{{wafpolicy01}}",
+						"wafConfig",
+						"humanInteractionChallenge"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WAF_HIC_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": \"DETECT\",\r\n    \"actionExpirationInSeconds\": 60,\r\n    \"challengeSettings\": {\r\n        \"blockAction\": \"SHOW_CAPTCHA\",\r\n        \"blockErrorPageCode\": \"HIC\",\r\n        \"blockErrorPageDescription\": \"Access blocked by website owner. Please contact support.\",\r\n        \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n        \"blockResponseCode\": 403,\r\n        \"captchaFooter\": \"Enter the letters and numbers as they are shown in image above.\",\r\n        \"captchaHeader\": \"We have detected an increased number of attempts to access this website. To help us keep this site secure, please let us know that you are not a robot by entering the text from the image below.\",\r\n        \"captchaSubmitLabel\": \"Yes, I am human.\",\r\n        \"captchaTitle\": \"Are you human?\"\r\n    },\r\n    \"failureThreshold\": 5,\r\n    \"failureThresholdExpirationInSeconds\": 60,\r\n    \"interactionThreshold\": 3,\r\n    \"isEnabled\": true,\r\n    \"recordingPeriodInSeconds\": 10\r\n}"
+				},
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/waasPolicies/{{wafpolicy01}}/wafConfig/humanInteractionChallenge",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"waasPolicies",
+						"{{wafpolicy01}}",
+						"wafConfig",
+						"humanInteractionChallenge"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WAF_DFC_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/waasPolicies/{{wafpolicy01}}/wafConfig/deviceFingerprintChallenge",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"waasPolicies",
+						"{{wafpolicy01}}",
+						"wafConfig",
+						"deviceFingerprintChallenge"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WAF_DFC_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": \"BLOCK\",\r\n    \"actionExpirationInSeconds\": 60,\r\n    \"challengeSettings\": {\r\n        \"blockAction\": \"SHOW_CAPTCHA\",\r\n        \"blockErrorPageCode\": \"DFC\",\r\n        \"blockErrorPageDescription\": \"Access blocked by website owner. Please contact support.\",\r\n        \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n        \"captchaFooter\": \"Enter the letters and numbers as they are shown in image above.\",\r\n        \"captchaHeader\": \"DFC detected an increased number of attempts to access this website. To help us keep this site secure, please let us know that you are not a robot by entering the text from the image below.\",\r\n        \"captchaSubmitLabel\": \"Yes, I am human.\",\r\n        \"captchaTitle\": \"Are you human?\"\r\n    },\r\n    \"failureThreshold\": 5,\r\n    \"failureThresholdExpirationInSeconds\": 60,\r\n    \"isEnabled\": true,\r\n    \"maxAddressCount\": 10,\r\n    \"maxAddressCountExpirationInSeconds\": 60\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/waasPolicies/{{wafpolicy01}}/wafConfig/deviceFingerprintChallenge",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"waasPolicies",
+						"{{wafpolicy01}}",
+						"wafConfig",
+						"deviceFingerprintChallenge"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WAF_CACHING-RULES_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/waasPolicies/{{wafpolicy01}}/wafConfig/cachingRules",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"waasPolicies",
+						"{{wafpolicy01}}",
+						"wafConfig",
+						"cachingRules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WAF_CACHING-RULES_PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n    \"name\": \"CachingRule01\",\r\n    \"action\": \"CACHE\",\r\n    \"cachingDuration\": \"PT1H\",\r\n    \"isClientCachingEnabled\" : false, \r\n    \"clientCachingDuration\" : \"PT1H\",\r\n    \"criteria\": [{\r\n        \"condition\": \"URL_STARTS_WITH\",\r\n        \"value\": \"/\"\r\n    }\r\n    ]\r\n}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/waasPolicies/{{wafpolicy01}}/wafConfig/cachingRules?waasPolicyId={{wafpolicy01}}",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"waasPolicies",
+						"{{wafpolicy01}}",
+						"wafConfig",
+						"cachingRules"
+					],
+					"query": [
+						{
+							"key": "waasPolicyId",
+							"value": "{{wafpolicy01}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WAF_CERTIFICATE_GET",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8ac6eb78-219a-4761-9957-d8957a3ba6e0",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"protectionRuleDetections\", jsonData.protectionRuleDetections);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"addressRateLimiting\": {\r\n        \"allowedRatePerAddress\": 1,\r\n        \"blockResponseCode\": 503,\r\n        \"isEnabled\": true,\r\n        \"maxDelayedCountPerAddress\": 10\r\n    },\r\n    \"captchas\": [],\r\n    \"deviceFingerprintChallenge\": {\r\n        \"action\": \"DETECT\",\r\n        \"actionExpirationInSeconds\": 60,\r\n        \"challengeSettings\": {\r\n            \"blockAction\": \"SHOW_ERROR_PAGE\",\r\n            \"blockErrorPageCode\": \"DFC\",\r\n            \"blockErrorPageDescription\": \"Access blocked by website owner. Please contact support.\",\r\n            \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n            \"blockResponseCode\": 403,\r\n            \"captchaFooter\": \"Enter the letters and numbers as they are shown in image above.\",\r\n            \"captchaHeader\": \"We have detected an increased number of attempts to access this website. To help us keep this site secure, please let us know that you are not a robot by entering the text from the image below.\",\r\n            \"captchaSubmitLabel\": \"Yes, I am human.\",\r\n            \"captchaTitle\": \"Are you human?\"\r\n        },\r\n        \"failureThreshold\": 10,\r\n        \"failureThresholdExpirationInSeconds\": 60,\r\n        \"isEnabled\": false,\r\n        \"maxAddressCount\": 20,\r\n        \"maxAddressCountExpirationInSeconds\": 60\r\n    },\r\n    \"humanInteractionChallenge\": {\r\n        \"action\": \"BLOCK\",\r\n    \"actionExpirationInSeconds\": 60,\r\n    \"challengeSettings\": {\r\n        \"blockAction\": \"SHOW_CAPTCHA\",\r\n        \"blockErrorPageCode\": \"HIC\",\r\n        \"blockErrorPageDescription\": \"Access blocked by website owner. Please contact support.\",\r\n        \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n        \"captchaFooter\": \"Enter the letters and numbers as they are shown in image above.\",\r\n        \"captchaHeader\": \"We have detected an increased number of attempts to access this website. To help us keep this site secure, please let us know that you are not a robot by entering the text from the image below.\",\r\n        \"captchaSubmitLabel\": \"Yes, I am human.\",\r\n        \"captchaTitle\": \"Are you human?\"\r\n    },\r\n    \"failureThreshold\": 5,\r\n    \"failureThresholdExpirationInSeconds\": 60,\r\n    \"interactionThreshold\": 3,\r\n    \"isEnabled\": true,\r\n    \"recordingPeriodInSeconds\": 10\r\n    },\r\n    \"jsChallenge\": {\r\n        \"action\": \"BLOCK\",\r\n        \"actionExpirationInSeconds\": 60,\r\n        \"challengeSettings\": {\r\n            \"blockAction\": \"SHOW_ERROR_PAGE\",\r\n            \"blockErrorPageCode\": \"JSC-403\",\r\n            \"blockErrorPageDescription\": \"Access blocked by website owner. Please contact support.\",\r\n            \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n            \"blockResponseCode\": 403,\r\n            \"captchaFooter\": \"Enter the letters and numbers as they are shown in image above.\",\r\n            \"captchaHeader\": \"We have detected an increased number of attempts to access this website. To help us keep this site secure, please let us know that you are not a robot by entering the text from the image below.\",\r\n            \"captchaSubmitLabel\": \"Yes, I am human.\",\r\n            \"captchaTitle\": \"Are you human?\"\r\n        },\r\n        \"failureThreshold\": 5,\r\n        \"isEnabled\": false,\r\n        \"setHttpHeader\": {\r\n            \"name\": \"x-jsc-alerts\",\r\n            \"value\": \"{failed_amount}\"\r\n        }\r\n    },\r\n    \"protectionRules\": [\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"key\": \"981260\",\r\n            \"name\": \"SQL Hex Evasion Methods\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"key\": \"981318\",\r\n            \"name\": \"String Termination/Statement Ending\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"key\": \"950001\",\r\n            \"name\": \"Common SQL Injections\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"key\": \"981244\",\r\n            \"name\": \"SQL authentication bypass attempts\"\r\n        }\r\n    ],\r\n    \"protectionSettings\": {\r\n        \"allowedHttpMethods\": [\r\n            \"GET\",\r\n            \"POST\",\r\n            \"HEAD\",\r\n            \"OPTIONS\"\r\n        ],\r\n        \"blockAction\": \"SHOW_ERROR_PAGE\",\r\n        \"blockErrorPageCode\": \"403\",\r\n        \"blockErrorPageDescription\": \"Unexpected request detected by OCI WAF Protection Rules. If this message persist please contact support.\",\r\n        \"blockErrorPageMessage\": \"Access to the website is blocked.\",\r\n        \"blockResponseCode\": 403,\r\n        \"isResponseInspected\": false,\r\n        \"maxArgumentCount\": 255,\r\n        \"maxNameLengthPerArgument\": 400,\r\n        \"maxResponseSizeInKiB\": 1024,\r\n        \"maxTotalNameLengthOfArguments\": 64000,\r\n        \"mediaTypes\": [\r\n            \"text/html\",\r\n            \"text/plain\"\r\n        ],\r\n        \"recommendationsPeriodInDays\": 5\r\n    },\r\n    \"threatFeeds\": [\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      the IP blocklist includes known ZeuS Command & Control servers (hosts) around the world.\\n\",\r\n            \"key\": \"1bb88999-9ae1-4452-9f9d-95b1ce735e03\",\r\n            \"name\": \"Zeus Tracker\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      is the blacklist of \\\"bad\\\" SSL certificates identified by abuse.ch to be associated with malware\\n      or botnet activities.\\n\",\r\n            \"key\": \"13a8e443-8ef5-4636-b9ec-69169e54e818\",\r\n            \"name\": \"SSL Abuse\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      is the blocklist includes IPs which are being used as botnet Command & Control for the Palevo\\n      crimeware.\\n\",\r\n            \"key\": \"fe7ca6ca-e8dc-4cd7-b1ec-0eb311b02bdd\",\r\n            \"name\": \"Palevo\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      Includes IP addresses acting as exit nodes for the Tor Network. Exit nodes are the last point along the proxy chain\\n      and make a direct connection to the originator’s intended destination.\\n\",\r\n            \"key\": \"dbdb0c6d-e404-438f-9cfe-f5f746d5d7dd\",\r\n            \"name\": \"Webroot Tor Proxy\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      The Feodo Tracker Feodo IP Blocklist contains IP addresses used as C&C communication channel\\n      by the Feodo Trojan. This lists contains two types of IP address: Feodo C&C servers used by\\n      version A, version C and version D of the Feodo Trojan and Feodo C&C servers used by version\\n      B which are usually used for the exclusive purpose of hosting a Feodo C&C server.\\n\",\r\n            \"key\": \"58c0dfa1-0324-4bd2-80c2-fc0e72c99944\",\r\n            \"name\": \"Feodo IP Blocklist\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      ET Intelligence provides actionable threat intel feeds to identify IPs involved in suspicious\\n      and malicious activity. All IPs are based on behavior observed directly by Proofpoint ET Labs.\\n\",\r\n            \"key\": \"0185867a-80e9-4426-b79c-b75651a9648e\",\r\n            \"name\": \"ET Intelligence\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      is the feed of known IPs from blocked SSH bruteforce attacks by the BruteForceBlocker project.\\n\",\r\n            \"key\": \"40d3c3bd-68ef-45ed-9124-3da733971362\",\r\n            \"name\": \"Danger Rules BruteForceBlocker\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      www.blocklist.de is a free and voluntary service provided by a Fraud/Abuse-specialist,\\n      whose servers are often attacked via SSH-, Mail-Login-, FTP-, Webserver- and other services.\\n\",\r\n            \"key\": \"796dbd2e-4de2-4c08-97b4-0c5c615cdc0a\",\r\n            \"name\": \"BlockList.de\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      is the feed of known, active and non-sinkholed C&Cs IP addresses supported\\n      by Bambenek Consulting.\\n\",\r\n            \"key\": \"bcf45eb0-0de6-45e1-a8e1-7875dd6af5bb\",\r\n            \"name\": \"Bambenek Consulting C&Cs\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      Includes IP addresses of malicious and unwanted mobile applications. This category leverages data from\\n      Webroot mobile threat research team.\\n\",\r\n            \"key\": \"0cc1e008-7fdf-4a85-9085-1c5608668233\",\r\n            \"name\": \"Webroot Mobile Threats\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      is the list of IPs for known Tor nodes. The Tor network is a group of\\n      volunteer-operated servers that allows people to improve their privacy and\\n      security on the Internet. Tor's users employ this network by connecting through\\n      a series of virtual tunnels rather than making a direct connection, thus allowing\\n      both organizations and individuals to share information over public networks\\n      without compromising their privacy.\\n\",\r\n            \"key\": \"ebf0a971-8a0b-4df5-9ac3-4b1dce84f257\",\r\n            \"name\": \"TOR Nodes\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      Includes IP addresses providing proxy and def services.\\n\",\r\n            \"key\": \"d1cc5a9e-0035-4f5c-9161-e03148f0beb8\",\r\n            \"name\": \"Webroot Proxy\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      Includes IP addresses hosting phishing sites, other kind of fraud activities such as Ad Click Fraud or Gaming fraud.\\n\",\r\n            \"key\": \"4585cb3c-98ba-4f3b-8261-54f25bfb3a9e\",\r\n            \"name\": \"Webroot Phishing\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      Deny access from IP addresses currently known to be infected with malware. This category also includes\\n      IPs with average low Webroot Reputation Index score. Enabling this category will prevent access from\\n      sources identified to contact malware distribution points.\\n\",\r\n            \"key\": \"6207a5f6-30eb-462d-84b4-0522ec505aa8\",\r\n            \"name\": \"Webroot Reputation\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      Includes DOS, DDOS, anomalous sync flood, anomalous traffic detection.\\n\",\r\n            \"key\": \"6d0af4a6-ef5a-43c2-bb15-acd311d50f5b\",\r\n            \"name\": \"Webroot Denial of Service\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      Includes all reconnaissance such as probes, host scan, domain scan and password brute force attack.\\n\",\r\n            \"key\": \"41998e12-4dd0-431a-a568-2c758ef2e565\",\r\n            \"name\": \"Webroot Scanners\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      Includes Botnet C&C channels, and infected zombie machine controlled by Bot master.\\n\",\r\n            \"key\": \"2a0937af-d252-4c47-8b4e-c189530ab21c\",\r\n            \"name\": \"Webroot BotNets\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      Includes cross site scripting, iFrame injection, SQL injection, cross domain injection, or domain\\n      password brute force attack.\\n\",\r\n            \"key\": \"3ab5a219-1812-4531-82f5-66c5447171a3\",\r\n            \"name\": \"Webroot Web Attacks\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      Includes active IP Address offering or distributing malware, shell code, rootkits, worms or viruses.\\n\",\r\n            \"key\": \"ccc93fa5-8ce9-44fa-af4c-5625f2091c3b\",\r\n            \"name\": \"Webroot Windows Exploits\"\r\n        },\r\n        {\r\n            \"action\": \"BLOCK\",\r\n            \"description\": \"      Includes Tunneling Spam messages through proxy, anomalous SMTP activities, Forum Spam activities.\\n\",\r\n            \"key\": \"9c9ff6ea-9ebb-4ddf-b821-b5ae49c9dd23\",\r\n            \"name\": \"Webroot Spam Sources\"\r\n        }\r\n    ],\r\n    \"whitelists\": []\r\n}"
+				},
+				"url": {
+					"raw": "https://waas.uk-london-1.oraclecloud.com/{{apiversion}}/certificates/ocid1.waascertificate.oc1..aaaa......",
+					"protocol": "https",
+					"host": [
+						"waas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"certificates",
+						"ocid1.waascertificate.oc1..aaaa......"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OCI - List Instances In Compartment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1f8df47c-70b5-44aa-8127-9d443c146d7f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iaas.uk-london-1.oraclecloud.com/{{apiversion}}/instances?compartmentId=ocid1.compartment.oc1..aaaaa..................&limit=20&lifecycleState=RUNNING",
+					"protocol": "https",
+					"host": [
+						"iaas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"instances"
+					],
+					"query": [
+						{
+							"key": "compartmentId",
+							"value": "ocid1.compartment.oc1..aaaaa.................."
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						},
+						{
+							"key": "lifecycleState",
+							"value": "RUNNING"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OCI - Get Instance Details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://iaas.uk-london-1.oraclecloud.com/{{apiversion}}/instances/ocid1.instance.oc1.uk-london-1.abthe....................",
+					"protocol": "https",
+					"host": [
+						"iaas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"instances",
+						"ocid1.instance.oc1.uk-london-1.abthe...................."
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OCI - Update Instance Details",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{auth-signature}}"
+					},
+					{
+						"key": "hostname",
+						"type": "text",
+						"value": "{{hostname}}"
+					},
+					{
+						"key": "date",
+						"type": "text",
+						"value": "{{request-date}}"
+					},
+					{
+						"key": "Content-Length",
+						"type": "text",
+						"value": "{{content-length}}"
+					},
+					{
+						"key": "x-content-sha256",
+						"type": "text",
+						"value": "{{content-sha256}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"freeformTags\":{\n\t\t\"postmanTag\": \"{{region}}\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "https://iaas.uk-london-1.oraclecloud.com/{{apiversion}}/instances/ocid1.instance.oc1.uk-london-1.abthelj..........................",
+					"protocol": "https",
+					"host": [
+						"iaas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"instances",
+						"ocid1.instance.oc1.uk-london-1.abthelj.........................."
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OCI - Manage Instance",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://iaas.uk-london-1.oraclecloud.com/{{apiversion}}/instances/ocid1.instance.oc1.uk-london-1.abthe...............?action=STOP&action=START&action=RESET&action=SOFTSTOP&action=SOFTRESET",
+					"protocol": "https",
+					"host": [
+						"iaas",
+						"uk-london-1",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"{{apiversion}}",
+						"instances",
+						"ocid1.instance.oc1.uk-london-1.abthe..............."
+					],
+					"query": [
+						{
+							"key": "action",
+							"value": "STOP"
+						},
+						{
+							"key": "action",
+							"value": "START"
+						},
+						{
+							"key": "action",
+							"value": "RESET"
+						},
+						{
+							"key": "action",
+							"value": "SOFTSTOP"
+						},
+						{
+							"key": "action",
+							"value": "SOFTRESET"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "46d59ee2-df8d-462f-9228-b8019f46c6c4",
+				"type": "text/javascript",
+				"exec": [
+					"var navigator = {};",
+					"var window = {};",
+					"eval(pm.globals.get(\"jsrsasign\"));",
+					"",
+					"var headersToSign = [",
+					"        \"(request-target)\",",
+					"        \"date\",",
+					"        \"host\"",
+					"    ];",
+					"",
+					"",
+					"console.log(pm.variables.replaceIn(pm.request.url).toString())",
+					"console.log(pm.variables.replaceIn(pm.request.url.host).toString())",
+					"",
+					"var urlvar = (pm.variables.replaceIn(pm.request.url.host).toString())",
+					"var curr_date = new Date().toUTCString() ;",
+					"pm.request.headers.upsert({key:'Date',value:curr_date});",
+					"var host = pm.request.url.host.join(\".\") ;",
+					"var apiKeyId = pm.environment.get(\"tenancyId\") + \"/\" + pm.environment.get(\"authUserId\") +\"/\"+ pm.environment.get(\"keyFingerprint\");",
+					"var privateKey_var =  pm.environment.get(\"privateKey\").trim();",
+					"",
+					"var date_header = \"date: \"+ curr_date ;",
+					"var escapedTarget = pm.variables.replaceIn(request.url.split(pm.request.url.host.join(\".\"))[1]);",
+					"console.log(escapedTarget)",
+					"/*var escapedTarget = encodeURI(url.getPath());*/",
+					"var request_target_header = \"(request-target): \"+ request.method.toLowerCase() + \" \" + escapedTarget;",
+					"var host_header = \"host: \" + host ;",
+					"",
+					"",
+					"var signing_string_array = [ ",
+					"                request_target_header,",
+					"                date_header,",
+					"                host_header];",
+					"",
+					"var methodsThatRequireExtraHeaders = [\"POST\", \"PUT\", \"PATCH\"];",
+					"var body = \"\";",
+					"",
+					"if(methodsThatRequireExtraHeaders.indexOf(request.method.toUpperCase()) !== -1) {",
+					"    body = pm.request.body.raw;",
+					"    ",
+					"    //pm.environment.set(\"length\", body.length);",
+					"    ",
+					"    var content_length_header = \"content-length: \"+ body.length ; ",
+					"    var content_type_header = \"content-type: application/json\";",
+					"    ",
+					" ",
+					"    ",
+					"    var body_hash = new KJUR.crypto.MessageDigest({\"alg\": \"sha256\", \"prov\": \"cryptojs\"});",
+					"    body_hash.updateString(body);",
+					"    var bHashVal = body_hash.digest();",
+					"    var base64_encoded_body_hash = Buffer.from(bHashVal, 'hex').toString('base64');",
+					"    ",
+					"    var x_content_sha256_header = \"x-content-sha256: \" + base64_encoded_body_hash ; ",
+					"    ",
+					"\tpm.request.headers.upsert({key:'x-content-sha256',value:base64_encoded_body_hash});",
+					"\tpm.request.headers.upsert({key:'Content-Type',value:'application/json'});",
+					"    ",
+					"    signing_string_array = signing_string_array.concat([",
+					"        x_content_sha256_header,",
+					"        content_type_header,",
+					"        content_length_header ",
+					"         ",
+					"        ]);",
+					"",
+					"    headersToSign = headersToSign.concat([",
+					"        \"x-content-sha256\",",
+					"        \"content-type\",",
+					"        \"content-length\"",
+					"        ",
+					"        ",
+					"    ]);",
+					"    ",
+					"}",
+					"",
+					"",
+					"",
+					"var headers=headersToSign.join(\" \"); ",
+					"//console.log(headers);",
+					"",
+					"",
+					"var signing_string =signing_string_array.join(\"\\n\");",
+					"//console.log(signing_string);",
+					"",
+					"var sig = new KJUR.crypto.Signature({\"alg\": \"SHA256withRSA\"});",
+					"sig.init(privateKey_var);",
+					"sig.updateString(signing_string);",
+					"var hSigVal = sig.sign();",
+					"var base64_encoded_signature = Buffer.from(hSigVal, 'hex').toString('base64');",
+					"",
+					"",
+					"//var auth_string = 'Signature version=\"1\",headers=\"'+headers + '\",keyId=\"'+apiKeyId +'\",algorithm=\"rsa-sha256\",signature=\"' + base64_encoded_signature+ '\"' ;",
+					"var auth_string = 'Signature version=\"1\",keyId=\"'+apiKeyId  +'\",algorithm=\"rsa-sha256\",headers=\"'+headers+ '\",signature=\"' + base64_encoded_signature+ '\"' ;",
+					"pm.request.headers.upsert({key:'Authorization',value:auth_string});",
+					"",
+					"//console.log(auth_string);",
+					"",
+					"",
+					"",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "74e19816-aed7-464b-bc62-944768888151",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "f5f28e9c-c288-436a-9df4-e5220e8a7077",
+			"key": "apiversion",
+			"value": "{{apiversion}}",
+			"type": "string",
+			"disabled": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}
