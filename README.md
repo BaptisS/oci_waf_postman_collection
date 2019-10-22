@@ -96,11 +96,10 @@ Save the updated collection file.
  
 
 If you get anything different than ‘Status: 200 OK’, ensure there is no local or intermediate firewall preventing outbound HTTPS connectivity from Postman client computer to public Internet endpoints. 
-IMPORTANT NOTE :
- 
-Your REST client is now configured to manage your OCI WAF resources with the level of permissions assigned to the OCI user account referred in the environment variable. (OCI_Environment)
 
-DO NOT SEND A PUT REQUEST before verifying the Request’s Body parameters otherwise you could unexpectedly modify your WAF configuration. 
+***IMPORTANT NOTE :***
+Your REST client is now configured to manage your OCI WAF resources with the level of permissions assigned to the OCI user account referred in the environment variable. (OCI_Environment)
+**DO NOT SEND A PUT REQUEST** before verifying the Request’s Body parameters otherwise you could unexpectedly modify your WAF configuration. 
 
 Templates provided contains HTTP body’s parameters examples. 
 You should review and modify them before executing any PUT request.  
@@ -119,20 +118,25 @@ You should review and modify them before executing any PUT request.
  
 ## 6-    Step 6: Modify WAF Configuration (PUT WAF POLICY CONFIG)
 
-IMPORTANT NOTE:
-DO NOT SEND A PUT REQUEST before checking the Request’s Body parameters otherwise you could unexpectedly modify your WAF configuration. Templates provided contains HTTP body’s parameters examples. You should review and modify them before executing any PUT request.  
+***IMPORTANT NOTE:***
+**DO NOT SEND A PUT REQUEST** before checking the Request’s Body parameters otherwise you could unexpectedly modify your WAF configuration. Templates provided contains HTTP body’s parameters examples. You should review and modify them before executing any PUT request.  
 
 6.1 – In the Left pane, Select the “Collections” tab then expand the OCI_WAF_REST_XX_COLLECTION and select the ‘WAF_POLICY_PUT’ query. 
 6.2	– In the middle pane select the ‘Body’ tab and review the proposed configuration example. 
  
 The proposed example can be used to modify your WAF policy Configuration as per below :
  
--AddressRateLimiting: Enabled (default is disabled) – 1 Request per IP per Second max allowed. 
--Device Fingerprint Challenge: Enabled (default is disabled) – Redirect to CAPTCHA if client fails the DFC Challenge more than 5 times in 60 seconds. / 10 Different source IPs allowed max for the same DF in 60seconds period. 
--Human Interaction Challenge: Enabled (default is disabled) – Redirect to CAPTCHA if client fails the HIC Challenge more than 5 times in 60 seconds. / WAF needs to catch 3 human interactions in a 10 seconds recording period. 
--JavaScript Challenge: Enabled (default is disabled) – Redirect to CAPTCHA if client fails the JSC Challenge more than 5 consecutive times. 
--Protection Settings: Default settings. Block Error Page display a custom message. 
--Protection Rules:   Set of common protection rules enabled in Block Mode. 
+**-AddressRateLimiting:** Enabled (default is disabled) – 1 Request per IP per Second max allowed. 
+
+**-Device Fingerprint Challenge:** Enabled (default is disabled) – Redirect to CAPTCHA if client fails the DFC Challenge more than 5 times in 60 seconds. / 10 Different source IPs allowed max for the same DF in 60seconds period. 
+
+**-Human Interaction Challenge:** Enabled (default is disabled) – Redirect to CAPTCHA if client fails the HIC Challenge more than 5 times in 60 seconds. / WAF needs to catch 3 human interactions in a 10 seconds recording period. 
+
+**-JavaScript Challenge:** Enabled (default is disabled) – Redirect to CAPTCHA if client fails the JSC Challenge more than 5 consecutive times. 
+
+**-Protection Settings:** Default settings. Block Error Page display a custom message. 
+
+**-Protection Rules:**   Set of common protection rules enabled in Block Mode. 
 
 6.3 – After reviewing/updating if needed the Request’s body parameters, you can SEND the PUT request to update your WAF Policy. (Click only once)
  
