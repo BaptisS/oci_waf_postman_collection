@@ -3,8 +3,6 @@
 
 **OCI WAF Advanced features with Postman (REST APIs)**
 
-**OCI WAF Advanced features with Postman (REST APIs)**
-
 You can create and manage your OCI WAF Policies using the OCI web console, the CLI (Command Line Interface) or using REST APIs.
 
 This document will guides you through the configuration and usage of Postman (as a REST Client) to demonstrate how you can easily manage your WAF policies and enable OCI WAF advanced features (Device Fingerprint Challenge, Human Interaction Challenge , Address rate limit , Threat feeds, etc. )
@@ -28,7 +26,7 @@ This document will guides you through the configuration and usage of Postman (as
 - 1.2	- Launch Postman.
 - 1.3	- Skip the user registration by clicking on the bottom link (‘Skip signing in…’) if you do not want to create a Postman account.
 
- ######Note: You can review the benefits of creating a Postman account through Official Postman documentation.
+ ***Note:*** You can review the benefits of creating a Postman account through Official Postman documentation.
 
 - 1.4	– Close the ‘Create New’ Wizard. 
  
