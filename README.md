@@ -172,9 +172,7 @@ The number of allowed requests per second from one IP address. If unspecified, d
 https://docs.cloud.oracle.com/iaas/api/#/en/waas/20181116/AddressRateLimiting/
 
 **OCI WAF Device Fingerprint Challenge (BotManagement):** 
-The DFC generates a hashed signature of both virtual and real browsers based on 50+ attributes. These proprietary signatures are then leveraged for real-time correlation to identify and block malicious bots.
-The signature is based on a library of attributes detected via JavaScript listeners; the attributes include OS, screen resolution, fonts, UserAgent, IP address, etc. We are constantly making improvements and considering new libraries to include in our DFC build. We can also exclude attributes from the signature as needed.
-DFC collects attributes to generate a hashed signature about a client – if a fingerprint is not possible, then it will result in a block or alert action. Actions can be enforced across multiple devices if they share they have the same fingerprint.
+The DFC generates a hashed signature of both virtual and real browsers based on 50+ attributes. These proprietary signatures are then leveraged for real-time correlation to identify and block malicious bots. If a fingerprint is not possible, then it will result in a block or alert action. Actions can be enforced across multiple devices if they share the same fingerprint.
 https://docs.cloud.oracle.com/iaas/api/#/en/waas/20181116/DeviceFingerprintChallenge/
 
 **OCI WAF Human Interaction Challenge (BotManagement):** 
