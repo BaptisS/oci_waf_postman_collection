@@ -26,9 +26,13 @@ This document will guides you through the configuration and usage of Postman (as
 - 1.2	- Launch Postman.
 - 1.3	- Skip the user registration by clicking on the bottom link (‘Skip signing in…’) if you do not want to create a Postman account.
 
+![PMScreens](/img/01.png)
+
  ***Note:*** You can review the benefits of creating a Postman account through Official Postman documentation.
 
 - 1.4	– Close the ‘Create New’ Wizard. 
+
+![PMScreens](/img/02.png)
  
 ## 2-   Step 2: Import OCI WAF sample collection and environment templates 
 
@@ -60,18 +64,30 @@ If you are interested in using a different API endpoint than the default one (UK
 Save the updated collection file. 
 
 - 2.3 – In Postman’s ‘My Workspace’ Interface click on the ***“Import”*** button. (top left)
+
+![PMScreens](/img/03.png)
  
 - 2.4 – Select ***‘Import Folder’*** tab, Click ‘Choose Folders’ button and select the folder containing the extracted templates.  
+
+![PMScreens](/img/04.png)
  
 - 2.5 – Click ***‘Import’*** and ensure both the environment and the two collections have been imported successfully.  
+
+![PMScreens](/img/05.png)
  
 ## 3-   Step 3: Define your environment variables
  
 - 3.1 – In the top right of the Postman Interface, Click on the ***‘Manage Environments’*** button ***(wheel)***. 
+
+![PMScreens](/img/06.png)
  
 - 3.2 – Click the newly imported ***‘OCI_Environment’*** 
  
+ ![PMScreens](/img/07.png)
+ 
 - 3.3- Review and complete the followings environment variables (Current Value) : 
+
+![PMScreens](/img/08.png)
  
   - ***TenancyId:***  Your Tenancy OCID (ocid1.tenancy.oc1..aaaaxxx123)
   - ***AuthUserId :*** Your User OCI (ocid1.user.oc1.aaaaxxxxxx789)
@@ -86,11 +102,16 @@ Save the updated collection file.
 ## 4- Step 4: INITIALIZE Postman for OCI
 
 - 4.1 – In the Left pane, Select the ***“Collections”*** tab then expand the OCI_REST_INITIALIZATION Collection. 
+
+![PMScreens](/img/09.png)
  
 - 4.2 – Select the ***‘ONE_TIME_INITIALIZATION_CALL’*** Query and click on the ***‘Send’*** button. 
+
+![PMScreens](/img/10.png)
  
 - 4.3 – Review the response returned. Ensure initialization succeeded. (Status: 200 OK). 
  
+ ![PMScreens](/img/11.png)
 
 If you get anything different than ‘Status: 200 OK’, ensure there is no local or intermediate firewall preventing outbound HTTPS connectivity from Postman client computer to public Internet endpoints. 
 
@@ -106,13 +127,20 @@ You should review and modify them before executing any PUT request.
 ## 5-    Step 5: Execute your first API query (GET WAF POLICY CONFIG) 
 
 - 5.1 – In the Left pane, Select the ***“Collections”*** tab then expand the OCI_WAF_REST_XX_COLLECTION and select the ***‘WAF_POLICY_GET’*** query. 
+
+![PMScreens](/img/12.png)
  
 - 5.2 – In the Top Right section, ensure the ***‘OCI_Environment’*** is selected.
+
+![PMScreens](/img/13.png)
  
 - 5.3 - Click the ***‘Send’*** button 
+
+![PMScreens](/img/14.png)
  
 - 5.4 – Review the Status Code returned and associated outputs. (In the Center lower pane) 
- 
+
+![PMScreens](/img/15.png)
  
 ## 6-    Step 6: Modify WAF Configuration (PUT WAF POLICY CONFIG)
 
@@ -121,6 +149,8 @@ You should review and modify them before executing any PUT request.
 
 - 6.1 – In the Left pane, Select the **“Collections”** tab then expand the OCI_WAF_REST_XX_COLLECTION and select the ***‘WAF_POLICY_PUT’*** query. 
 - 6.2	– In the middle pane select the ***‘Body’*** tab and review the proposed configuration example. 
+
+![PMScreens](/img/16.png)
  
 The proposed example can be used to modify your WAF policy Configuration as per below :
  
@@ -138,18 +168,33 @@ The proposed example can be used to modify your WAF policy Configuration as per 
 
 - 6.3 – After reviewing/updating if needed the Request’s body parameters, you can ***SEND*** the PUT request to update your WAF Policy. (Click only once)
  
+ ![PMScreens](/img/17.png)
+ 
 - 6.4	– In the middle lower pane, review the Status returned. 
 ‘202 Accepted’ means the PUT request has been accepted by the OCI WAF. (Postman may briefly show up an error window. You can ignore it.)
  
+ ![PMScreens](/img/18.png)
+ 
 - 6.5 – Select the ***‘Headers’*** tab and review the Response headers. 
+ 
+ ![PMScreens](/img/19.png)
  
 - 6.6 – Copy the ***‘Opc-Work-Request-id’*** OCID.
 - 6.7 – While the OCI WAF configuration is asynchronously updated across all OCI WAF endpoint worldwide (It can take up to 10min in some cases), you can check the status of the update by invoking the ***WAF_WORKREQUEST_GET*** request. 
  
+ ![PMScreens](/img/20.png)
+ 
 - 6.8 – Paste the ***‘Opc-Work-Request-id’*** OCID in the url section as per below : 
+
+![PMScreens](/img/21.png)
  
 - 6.9 – Click ***‘Send’*** button and review the response output : 
  
+ ![PMScreens](/img/22.png)
+ 
+ (...)
+ 
+ ![PMScreens](/img/23.png)
  
 
  
