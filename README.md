@@ -49,13 +49,18 @@ You can find more detailed information about OCI API endpoints here : https://do
 
 If you are interested in using a different API endpoint than the default one (UK), open the sample collection file (‘OCI_WAF_REST_UK_COLLECTION_v4.postman_collection’) with your preferred text editor and ‘replace-all’ occurrences of ***‘uk-london-1’*** by the desired one : 
 
+- ap-melbourne-1
 - ap-mumbai-1
 - ap-seoul-1
+- ap-osaka-1
 - ap-sydney-1
 - ap-tokyo-1
+- ca-montreal-1
 - ca-toronto-1
+- eu-amsterdam-1
 - eu-frankfurt-1
 - eu-zurich-1
+- me-jeddah-1
 - sa-saopaulo-1
 - uk-london-1
 - us-ashburn-1
